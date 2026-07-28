@@ -1,28 +1,36 @@
-let myLeads = ["www.awesomelead.com", "www.epiclead.com", "www.greatlead.com"];
+let myLeads = [];
 //const: cannot be reasign value
-const inputEl = document.querySelector('#input-el');
-const inputBtn = document.querySelector('#input-btn');
-const ulEl = document.querySelector('#ul-el');
+const inputEl = document.querySelector("#input-el");
+const inputBtn = document.querySelector("#input-btn");
+const ulEl = document.querySelector("#ul-el");
 
 //refering to the input-btn
-inputBtn.addEventListener('click', function() {
-    //pushing values from the inputs to the array 'myLeads'
-   myLeads.push(inputEl.value);
-   inputEl.value = '';
-   console.log(myLeads);
+inputBtn.addEventListener("click", function () {
+  //pushing values from the inputs to the array 'myLeads'
 
-})
+  //new variable that refering to the value of input
+  const currentInput = inputEl.value;
 
-// 1. Create a variable, listItems, to hold all the HTML for the list items
-let listItems = '';
+  //if not empty input, then push
+  if (currentInput.trim() !== "") {
+    myLeads.push(currentInput);
+  }
 
-// Log out the items in the myLeads array using a for loop 
-for(let i = 0; i < myLeads.length; i++) {
+  //clear inputs
+  inputEl.value = "";
 
-     // 2. Add the item to the listItems variable
-     listItems += `<li>${myLeads[i]}</li>`;
+  console.log(myLeads);
+
+  //calling the function to render the arrays when it's click
+  renderLeads();
+});
+
+//function to render the value of arrays
+function renderLeads() {
+  let listItems = "";
+  for (let i = 0; i < myLeads.length; i++) {
+    // 2. Add the item to the listItems variable
+    listItems += `<li><a  href="${myLeads[i]}" target='_blank' >${myLeads[i]}</a></li>`;
+  }
+  ulEl.innerHTML = listItems;
 }
-
-ulEl.innerHTML = listItems;
-
-
