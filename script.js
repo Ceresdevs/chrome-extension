@@ -2,9 +2,9 @@ let myLeads = [];
 let oldLeads = [1,2,3,4,5];
 const inputEl = document.querySelector("#input-el");
 const inputBtn = document.querySelector("#input-btn");
+const tabBtn = document.querySelector('#tab-btn');
 const deleteBtn = document.querySelector("#delete-btn");
 const ulEl = document.querySelector("#ul-el");
-
 // turn the localStorage into object/Array and Get the leads from the localStorage
 const leadsFromLocalStorage = JSON.parse(localStorage.getItem("myLeads"));
 console.log(leadsFromLocalStorage);
@@ -14,6 +14,15 @@ if (leadsFromLocalStorage) {
   myLeads = leadsFromLocalStorage;
   render(myLeads);
 }
+
+const tabs = [
+    {url: "https://www.linkedin.com/in/per-harald-borgen/"}
+]
+
+
+tabBtn.addEventListener('click', function () {
+  console.log(tabs[0].url);
+})
 
 
 
